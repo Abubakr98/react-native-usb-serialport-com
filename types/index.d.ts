@@ -94,11 +94,11 @@ interface RNSerialportStatic {
 
   /**
    * Returns status via Promise
-   *
+   * @param {string} deviceName
    * @returns {Promise<boolean>}
    * @memberof RNSerialportStatic
    */
-  isOpen(): Promise<boolean>
+  isOpen(deviceName: string): Promise<boolean>
 
   /**
    * Returns status boolean via Promise
@@ -225,28 +225,37 @@ interface RNSerialportStatic {
   disconnect(): void;
 
   /**
-   * Writes string to port
+   * Writes integer array to port
    *
+   * @param {string} deviceName
+   * @param {Array<number>} data
+   * @memberof RNSerialportStatic
+   */
+  writeBytes(deviceName: string, data: Array<number>): void;
+
+  /**
+   * Writes string to port
+   * @param {string} deviceName
    * @param {string} data
    * @memberof RNSerialportStatic
    */
-  writeString(data: string): void;
+  writeString(deviceName: string, data: string): void;
 
   /**
    * Writes Base64 string to port
-   *
+   * @param {string} deviceName
    * @param {string} data
    * @memberof RNSerialportStatic
    */
-  writeBase64(data: string): void;
+  writeBase64(deviceName: string, data: string): void;
 
   /**
    * Writes hex string to port
-   *
+   * @param {string} deviceName
    * @param {string} data
    * @memberof RNSerialportStatic
    */
-  writeHexString(data: string): void
+  writeHexString(deviceName: string, data: string): void
 
   /**
    * Integer array convert to Utf16 string
